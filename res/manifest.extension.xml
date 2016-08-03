@@ -1,0 +1,47 @@
+﻿<Extension Id="{%= id %}">
+  <DispatchInfo>
+    <Resources>
+      <MainPath>{%= mainPath %}</MainPath>
+      <ScriptPath>{%= scriptPath %}</ScriptPath>
+      <CEFCommandLine>
+        {% cefParameters.forEach(function (param) { %}
+        <Parameter>{%= param %}</Parameter>
+        {% }); %}
+      </CEFCommandLine>
+    </Resources>
+    <Lifecycle>
+      <AutoVisible>{%= !!lifecycle.autoVisible %}</AutoVisible>
+      <StartOn>
+        {% lifecycle.events.forEach(function (event) { %}
+        <Event>{%= event %}</Event>
+        {% }); %}
+      </StartOn>
+    </Lifecycle>
+    <UI>
+      <Type>{%= type %}</Type>
+      <Menu>{%= name %}</Menu>
+      <Geometry>
+        <Size>
+          <Height>{%= size.base.height %}</Height>
+          <Width>{%= size.base.width %}</Width>
+        </Size>
+        <MaxSize>
+          <Height>{%= size.max.height %}</Height>
+          <Width>{%= size.max.width %}</Width>
+        </MaxSize>
+        <MinSize>
+          <Height>{%= size.min.height %}</Height>
+          <Width>{%= size.min.width %}</Width>
+        </MinSize>
+      </Geometry>
+      <Icons>
+        <Icon Type="Normal">{%= icons.light.normal %}</Icon>
+        <Icon Type="RollOver">{%= icons.light.hover %}</Icon>
+        <Icon Type="Disabled">{%= icons.light.disabled %}</Icon>
+        <Icon Type="DarkNormal">{%= icons.dark.normal %}</Icon>
+        <Icon Type="DarkRollOver">{%= icons.dark.hover %}</Icon>
+        <Icon Type="DarkDisabled">{%= icons.dark.disabled %}</Icon>
+      </Icons>
+    </UI>
+  </DispatchInfo>
+</Extension>

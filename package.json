@@ -1,0 +1,54 @@
+{
+  "name": "cepy",
+  "version": "0.1.0",
+  "author": {
+    "name": "Francesco Camarlinghi",
+    "email": "me@minifloppy.it",
+    "url": "http://www.minifloppy.it/"
+  },
+  "homepage": "https://github.com/fcamarlinghi/cepy",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fcamarlinghi/cepy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fcamarlinghi/cepy/issues"
+  },
+  "license": "Apache-2.0",
+  "description": "An utility that helps debugging and packaging HTML5-based extensions for Adobe Creative Cloud applications.",
+  "keywords": [
+    "adobe",
+    "cep",
+    "creative cloud",
+    "cc",
+    "extension",
+    "html5",
+    "photoshop",
+    "illustrator",
+    "indesign",
+    "after effects",
+    "premiere",
+    "prelude",
+    "flash",
+    "dreamweaver",
+    "incopy"
+  ],
+  "engines": {
+    "node": ">=5.10.1"
+  },
+  "main": "cepy.js",
+  "bin": "bin/cepy.js",
+  "dependencies": {
+    "bluebird": "latest",
+    "commander": "latest",
+    "chalk": "latest",
+    "lodash": "latest",
+    "rimraf": "latest",
+    "mkdirp": "latest",
+    "cpy": "latest",
+    "node-uuid": "latest",
+    "zxp-provider": "latest"
+  },
+
+  "private": true
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionList>
+  {% extensions.forEach(function (extension, i) { %}
+  <Extension Id="{%= extension.id %}">
+    <HostList>
+      <!-- Photoshop -->
+      <Host Name="PHXS" Port="{%= bundle.debug.port + (i * 100) + 0 %}"/>
+
+      <!-- Illustrator -->
+      <Host Name="ILST" Port="{%= bundle.debug.port + (i * 100) + 1 %}"/>
+
+      <!-- InDesign -->
+      <Host Name="IDSN" Port="{%= bundle.debug.port + (i * 100) + 2 %}" />
+
+      <!-- After Effects -->
+      <Host Name="AEFT" Port="{%= bundle.debug.port + (i * 100) + 3 %}" />
+
+      <!-- Premiere -->
+      <Host Name="PPRO" Port="{%= bundle.debug.port + (i * 100) + 4 %}" />
+
+      <!-- Prelude -->
+      <Host Name="PRLD" Port="{%= bundle.debug.port + (i * 100) + 5 %}" />
+
+      <!-- Flash -->
+      <Host Name="FLPR" Port="{%= bundle.debug.port + (i * 100) + 6 %}" />
+
+      <!-- Dreamweaver -->
+      <Host Name="DRWV" Port="{%= bundle.debug.port + (i * 100) + 7 %}" />
+
+      <!-- InCopy -->
+      <Host Name="AICY" Port="{%= bundle.debug.port + (i * 100) + 8 %}" />
+    </HostList>
+  </Extension>
+  {% }); %}
+</ExtensionList>
