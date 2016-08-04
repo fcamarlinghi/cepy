@@ -202,7 +202,7 @@ Cepy.prototype.release = function (debug)
     // Package hybrid extension
     .then(() =>
     {
-        return zxp.createPackage(this._packaging.staging, this._packaging.output, this._packaging);
+        return zxp.createPackage(this._packaging.staging, this._packaging.output, this._packaging, debug);
     })
 
     .then(() => console.log(`Package ${chalk.green(path.resolve(this._packaging.output))} created successfully.`))
