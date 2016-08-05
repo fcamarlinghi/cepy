@@ -43,7 +43,7 @@ function execute(mode, options)
     }
     else if (mode === 'release')
     {
-        packager.release(config.packaging)
+        packager.release(options.debug)
         .then(process.exit)
         .catch(process.exit);
     }
