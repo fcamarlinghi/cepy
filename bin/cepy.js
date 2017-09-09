@@ -26,7 +26,7 @@ const program = require('commander'),
 
 function execute(mode, options)
 {
-    options.config = options.config || './cepy.js';
+    options.config = options.config || './cepy-config.js';
     let packager = cepy(require(path.resolve(options.config)));
 
     if (mode === 'compile')
@@ -57,7 +57,7 @@ program
     .command('compile <buildName>')
     .description('Compiles the specified build to a folder. Generates manifest files and, optionally, debug files.')
     .option('-o, --output <path>', 'Output folder.')
-    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy.js".')
+    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
     .action((buildName, options) =>
     {
@@ -69,7 +69,7 @@ program
 program
     .command('launch <buildName>')
     .description('Compiles and launches the specified build, optionally in debug mode.')
-    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy.js".')
+    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
     .option('-p, --product', 'Optional. Name of the product that will be launched. Will fall back to the first product specified in the build.')
     .option('-f, --family', 'Optional. Name of the family of the product that will be launched. Will fall back to the first family specified in the build.')
@@ -84,7 +84,7 @@ program
     .command('release')
     .alias('package')
     .description('Packages all the builds specified in the configuration file, optionally in debug mode.')
-    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy.js".')
+    .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
     .action((options) =>
     {
