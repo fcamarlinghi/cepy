@@ -34,7 +34,7 @@
     "incopy"
   ],
   "engines": {
-    "node": ">=5.10.1"
+    "node": ">=8.9.1"
   },
   "main": "cepy.js",
   "bin": "bin/cepy.js",
@@ -48,6 +48,5 @@
     "rimraf": "^2.6.2",
     "uuid": "^3.1.0",
     "zxp-provider": "^1.1.1"
-  },
-  "private": true
+  }
 }
