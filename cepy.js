@@ -74,6 +74,10 @@ Cepy.constructor = Cepy;
 
 /**
  * Compiles the specified build to a folder. Generates manifest files and, optionally, debug files.
+ * @param {String} buildName
+ * @param {String} outputFolder
+ * @param {Boolean} [debug=false]
+ * @returns {Promise}
  */
 Cepy.prototype.compile = function (buildName, outputFolder, debug)
 {
@@ -106,8 +110,14 @@ Cepy.prototype.compile = function (buildName, outputFolder, debug)
 
 /**
  * Compiles and launches the specified build.
+ * @param {String} buildName
+ * @param {String=} product
+ * @param {String=} family
+ * @param {Boolean} [debug=false]
+ * @returns {Promise}
  */
 Cepy.prototype.launch = function (buildName, debug, product, family)
+Cepy.prototype.launch = function (buildName, product, family, debug)
 {
     console.log(chalk.bold('Running cepy in "launch" mode'));
 
@@ -154,6 +164,8 @@ Cepy.prototype.launch = function (buildName, debug, product, family)
 
 /**
  * Compiles all the builds and files to a single ZXP package.
+ * @param {Boolean} [debug=false]
+ * @returns {Promise}
  */
 Cepy.prototype.pack = function (debug)
 {

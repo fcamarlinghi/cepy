@@ -38,6 +38,7 @@ function execute(mode, options)
     else if (mode === 'launch')
     {
         packager.launch(options.buildName, options.debug, options.product, options.family)
+        packager.launch(options.buildName, options.product, options.family, options.debug)
         .then(process.exit)
         .catch(process.exit);
     }
