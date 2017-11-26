@@ -23,19 +23,43 @@
  */
 const build = Object.freeze({
 
-    // Build source folder
+    /**
+     * Build source folder.
+     * @type {String}
+     */
     source: '',
 
-    // Bundle configuration, see bundle.js
+    /**
+     * Bundle configuration, see bundle.js.
+     * @type {Object}
+     */
     bundle: {},
 
-    // Extensions array, see extension.js
+    /**
+     * Extensions array, see extension.js.
+     * @type {Object[]}
+     */
     extensions: [],
 
-    // Products targeted by this build
+    /**
+     * Products targeted by this build.
+     * @type {(String,String[])}
+     */
     products: [],
 
-    // Families targeted by this build
+    /**
+     * Families targeted by this build, specified as either a range of supported families,
+     * or as the minimum supported family.
+     * @type {(String,String[])}
+     * 
+     * @example
+     * Arrays will always be treated as a range of supported versions, whereas a string
+     * will be treated as the minimum requirement for the bundle. Examples:
+     * 
+     * ['CC2014', 'CC2017']: support families ranging from CC 2014 to CC 2017 (including families in-between)
+     * ['CC2014']: only support CC 2014
+     * 'CC2014': support CC 2014 and all future versions (CC2015, CC2015.5, CC2017 and so on)
+     */
     families: [],
 
 });
