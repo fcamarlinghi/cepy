@@ -1,5 +1,5 @@
 
-#cepy
+# cepy
 > A command line utility that helps debugging and packaging HTML5-based extensions for Adobe Creative Cloud applications.
 
 This is an attempt to build a tool with all the capabilities of [grunt-cep](https://github.com/fcamarlinghi/grunt-cep/) (and more!), but completely decoupled from Grunt and its conventions/ecosystem.
