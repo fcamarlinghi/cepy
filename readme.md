@@ -78,8 +78,8 @@ cepy compile --output ./build --debug example-build
 cepy launch --debug example-build
 
 # or
-# run all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
-cepy release
+# compile all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
+cepy pack
 ```
 From code:
 ```js
@@ -94,8 +94,8 @@ cepy(config).compile('example-build', 'output-folder', true);
 cepy(config).launch('example-build', true);
 
 // or
-// run all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
-cepy(config).release(false);
+// compile all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
+cepy(config).pack(false);
 ```
 
 ## Contributing

@@ -155,9 +155,9 @@ Cepy.prototype.launch = function (buildName, debug, product, family)
 /**
  * Compiles all the builds and files to a single ZXP package.
  */
-Cepy.prototype.release = function (debug)
+Cepy.prototype.pack = function (debug)
 {
-    console.log(chalk.bold('Running cepy in "release" mode'));
+    console.log(chalk.bold('Running cepy in "package" mode'));
 
     return Promise.bind(this)
 
@@ -192,7 +192,7 @@ Cepy.prototype.release = function (debug)
     {
         return Promise.map(this._builds, (build) =>
         {
-            return build.release(this._packaging.staging, !!debug, this._packaging);
+            return build.pack(this._packaging.staging, !!debug, this._packaging);
         });
     })
 

@@ -41,9 +41,9 @@ function execute(mode, options)
         .then(process.exit)
         .catch(process.exit);
     }
-    else if (mode === 'release')
+    else if (mode === 'pack')
     {
-        packager.release(options.debug)
+        packager.pack(options.debug)
         .then(process.exit)
         .catch(process.exit);
     }
@@ -81,14 +81,14 @@ program
     });
 
 program
-    .command('release')
+    .command('pack')
     .alias('package')
-    .description('Packages all the builds specified in the configuration file, optionally in debug mode.')
+    .description('Compiles all the builds and files, optionally in debug mode, and then packages them into a redistributable ZXP archive.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
     .action((options) =>
     {
-        execute('release', options);
+        execute('pack', options);
     });
 
 program
