@@ -116,7 +116,6 @@ Cepy.prototype.compile = function (buildName, outputFolder, debug)
  * @param {Boolean} [debug=false]
  * @returns {Promise}
  */
-Cepy.prototype.launch = function (buildName, debug, product, family)
 Cepy.prototype.launch = function (buildName, product, family, debug)
 {
     console.log(chalk.bold('Running cepy in "launch" mode'));
