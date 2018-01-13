@@ -84,10 +84,10 @@ Cepy.prototype.compile = function (buildName, outputFolder, debug)
 {
     log(chalk.bold('Running cepy in "compile" mode.'));
 
-    return Promise.bind(this)
+    return Promise
 
     // Compile the specified build
-    .then(() =>
+    .try(() =>
     {
         const build = this._builds.find(build => build.name === buildName);
 
@@ -115,10 +115,10 @@ Cepy.prototype.launch = function (buildName, product, family, debug)
 {
     log(chalk.bold('Running cepy in "launch" mode.'));
 
-    return Promise.bind(this)
+    return Promise
 
     // Config validation
-    .then(() =>
+    .try(() =>
     {
         if (typeof this._packaging.staging !== 'string' || this._packaging.staging.length === 0)
         {
@@ -157,10 +157,10 @@ Cepy.prototype.pack = function (debug)
 {
     log(chalk.bold('Running cepy in "package" mode.'));
 
-    return Promise.bind(this)
+    return Promise
 
     // Config validation
-    .then(() =>
+    .try(() =>
     {
         if (typeof this._packaging.output !== 'string' || this._packaging.output.length === 0)
         {
