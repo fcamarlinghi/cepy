@@ -19,7 +19,9 @@
     </Lifecycle>
     <UI>
       <Type>{%= type %}</Type>
+      {% if (name) { %}
       <Menu>{%= name %}</Menu>
+      {% } %}
       <Geometry>
         <Size>
           <Height>{%= size.base.height %}</Height>

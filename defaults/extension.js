@@ -31,6 +31,7 @@ const extension = Object.freeze({
     id: '',
 
     // Extension name
+    // If empty, the extension won't be listed in the "Extensions" menu
     name: '',
 
     // Extension root file
