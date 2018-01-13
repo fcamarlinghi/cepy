@@ -41,13 +41,13 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "chalk": "^2.3.0",
-    "commander": "^2.12.1",
+    "commander": "^2.13.0",
     "cpy": "^6.0.0",
     "debug": "^3.1.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.2",
     "uuid": "^3.1.0",
-    "zxp-provider": "^1.1.1"
+    "zxp-provider": "^1.1.3"
   }
 }
