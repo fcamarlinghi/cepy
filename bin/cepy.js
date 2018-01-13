@@ -21,32 +21,39 @@
 const program = require('commander'),
       chalk = require('chalk'),
       path = require('path'),
+      debug = require('debug')('cepy'),
       cepy = require('../cepy.js'),
       version = require('./package.json').version;
+
+function handleError(error)
+{
+    console.error(error);
+    process.exit(1);
+};
 
 function execute(mode, options)
 {
     options.config = options.config || './cepy-config.js';
+    debug.enabled = debug.enabled || options.verbose;
     let packager = cepy(require(path.resolve(options.config)));
 
     if (mode === 'compile')
     {
         packager.compile(options.buildName, options.output, options.debug)
         .then(process.exit)
-        .catch(process.exit);
+        .catch(handleError);
     }
     else if (mode === 'launch')
     {
-        packager.launch(options.buildName, options.debug, options.product, options.family)
         packager.launch(options.buildName, options.product, options.family, options.debug)
         .then(process.exit)
-        .catch(process.exit);
+        .catch(handleError);
     }
     else if (mode === 'pack')
     {
         packager.pack(options.debug)
         .then(process.exit)
-        .catch(process.exit);
+        .catch(handleError);
     }
 };
 
@@ -60,6 +67,7 @@ program
     .option('-o, --output <path>', 'Output folder.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
+    .option('--verbose', 'Optional. Enables verbose logging.')
     .action((buildName, options) =>
     {
         options = options || {};
@@ -74,6 +82,7 @@ program
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
     .option('-p, --product', 'Optional. Name of the product that will be launched. Will fall back to the first product specified in the build.')
     .option('-f, --family', 'Optional. Name of the family of the product that will be launched. Will fall back to the first family specified in the build.')
+    .option('--verbose', 'Optional. Enables verbose logging.')
     .action((buildName, options) =>
     {
         options = options || {};
@@ -87,6 +96,7 @@ program
     .description('Compiles all the builds and files, optionally in debug mode, and then packages them into a redistributable ZXP archive.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
     .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
+    .option('--verbose', 'Optional. Enables verbose logging.')
     .action((options) =>
     {
         execute('pack', options);
@@ -97,7 +107,7 @@ program
 	.action(function (arg)
 	{
 	    // Catch-all for invalid commands
-	    console.log(chalk.red(`Invalid command "${arg}".`));
+	    console.log(chalk.red(`Unknown command "${arg}".`));
 	    program.help();
 	    process.exit(1);
 	});

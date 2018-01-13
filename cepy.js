@@ -19,7 +19,8 @@
 const _ = require('lodash'),
       chalk = require('chalk'),
       Promise = require('bluebird'),
-      path = require('path');
+      path = require('path'),
+      log = require('debug')('cepy');
 
 const rimraf = Promise.promisify(require('rimraf')),
       mkdirp = Promise.promisify(require('mkdirp')),
@@ -81,7 +82,7 @@ Cepy.constructor = Cepy;
  */
 Cepy.prototype.compile = function (buildName, outputFolder, debug)
 {
-    console.log(chalk.bold('Running cepy in "compile" mode'));
+    log(chalk.bold('Running cepy in "compile" mode.'));
 
     return Promise.bind(this)
 
@@ -96,14 +97,8 @@ Cepy.prototype.compile = function (buildName, outputFolder, debug)
         }
         else
         {
-            throw new Error(`No build with the specified name could be found: ${buildName}`);
+            throw new Error(`No build with the specified name could be found: ${buildName}.`);
         }
-    })
-
-    .catch(error =>
-    {
-        console.log(chalk.red(error));
-        throw error;
     });
 
 };
@@ -118,18 +113,16 @@ Cepy.prototype.compile = function (buildName, outputFolder, debug)
  */
 Cepy.prototype.launch = function (buildName, product, family, debug)
 {
-    console.log(chalk.bold('Running cepy in "launch" mode'));
+    log(chalk.bold('Running cepy in "launch" mode.'));
 
     return Promise.bind(this)
 
     // Config validation
     .then(() =>
     {
-        console.log('Validating options');
-
         if (typeof this._packaging.staging !== 'string' || this._packaging.staging.length === 0)
         {
-            throw new Error(`Invalid staging folder path: ${this._packaging.staging}`);
+            throw new Error(`Invalid staging folder path: ${this._packaging.staging}.`);
         }
 
         if (this._builds.size === 0)
@@ -142,7 +135,7 @@ Cepy.prototype.launch = function (buildName, product, family, debug)
 
         if (!build)
         {
-            throw new Error(`No build with the specified name could be found: ${buildName}`);
+            throw new Error(`No build with the specified name could be found: ${buildName}.`);
         }
 
         return build;
@@ -152,12 +145,6 @@ Cepy.prototype.launch = function (buildName, product, family, debug)
     .then((build) =>
     {
         return build.launch(this._packaging.staging, !!debug);
-    })
-
-    .catch(error =>
-    {
-        console.log(chalk.red(error));
-        throw error;
     });
 };
 
@@ -168,7 +155,7 @@ Cepy.prototype.launch = function (buildName, product, family, debug)
  */
 Cepy.prototype.pack = function (debug)
 {
-    console.log(chalk.bold('Running cepy in "package" mode'));
+    log(chalk.bold('Running cepy in "package" mode.'));
 
     return Promise.bind(this)
 
@@ -177,12 +164,12 @@ Cepy.prototype.pack = function (debug)
     {
         if (typeof this._packaging.output !== 'string' || this._packaging.output.length === 0)
         {
-            throw new Error(`Invalid output file name: ${this._packaging.output}`);
+            throw new Error(`Invalid output file name: ${this._packaging.output}.`);
         }
 
         if (typeof this._packaging.staging !== 'string' || this._packaging.staging.length === 0)
         {
-            throw new Error(`Invalid staging folder path: ${this._packaging.staging}`);
+            throw new Error(`Invalid staging folder path: ${this._packaging.staging}.`);
         }
     })
 
@@ -216,13 +203,7 @@ Cepy.prototype.pack = function (debug)
         return zxp.createPackage(this._packaging.staging, this._packaging.output, this._packaging, debug);
     })
 
-    .then(() => console.log(`Package ${chalk.green(path.resolve(this._packaging.output))} created successfully.`))
-
-    .catch(error =>
-    {
-        console.log(chalk.red(error));
-        throw error;
-    })
+    .tap(() => log(`Package ${chalk.green(path.resolve(this._packaging.output))} created successfully.`))
 
     // Cleanup staging folder
     .finally(() =>
