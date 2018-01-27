@@ -71,14 +71,14 @@ From the command line:
 # use the --config <path> switch to select a custom config file path
 
 # generate manifest/debug files for the 'example-build' build
-cepy compile --output ./build --debug example-build
+cepy decorate --debug example-build
 
 # or
 # launch the 'example-build' build in debug mode
 cepy launch --debug example-build
 
 # or
-# compile all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
+# package all the builds in release mode (won't generate .debug file) to an output .ZXP file
 cepy pack
 ```
 From code:
@@ -86,16 +86,14 @@ From code:
 const cepy = require('cepy'),
       config = require('./cepy.js');
 
-// generate manifest/debug files for the 'example-build' build
-cepy(config).compile('example-build', 'output-folder', true);
+const compiler = cepy(config);
 
-// or
 // launch the 'example-build' build in debug mode
-cepy(config).launch('example-build', true);
+compiler.launch('example-build', { debug: true });
 
 // or
-// compile all the builds in release mode (won't generate .debug file) and package them in an output .ZXP file
-cepy(config).pack(false);
+// package all the builds in an output .ZXP file
+compiler.pack();
 ```
 
 ## Contributing

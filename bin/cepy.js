@@ -21,7 +21,7 @@
 const program = require('commander'),
       chalk = require('chalk'),
       path = require('path'),
-      debug = require('debug')('cepy'),
+      log = require('debug')('cepy'),
       cepy = require('../cepy.js'),
       version = require('./package.json').version;
 
@@ -34,18 +34,18 @@ function handleError(error)
 function execute(mode, options)
 {
     options.config = options.config || './cepy-config.js';
-    debug.enabled = debug.enabled || options.verbose;
+    log.enabled = log.enabled || options.verbose;
     let packager = cepy(require(path.resolve(options.config)));
 
-    if (mode === 'compile')
+    if (mode === 'decorate')
     {
-        packager.compile(options.buildName, options.output, options.debug)
+        packager.decorate(options.buildName, options.debug)
         .then(process.exit)
         .catch(handleError);
     }
     else if (mode === 'launch')
     {
-        packager.launch(options.buildName, options.product, options.family, options.debug)
+        packager.launch(options.buildName, { product: options.product, family: options.family, debug: options.debug })
         .then(process.exit)
         .catch(handleError);
     }
@@ -62,24 +62,24 @@ program
     .version(version);
 
 program
-    .command('compile <buildName>')
-    .description('Compiles the specified build to a folder. Generates manifest files and, optionally, debug files.')
-    .option('-o, --output <path>', 'Output folder.')
+    .command('decorate <buildName>')
+    .alias('compile')
+    .description('Generates manifest files (and, optionally, debug files) for the specified build.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
-    .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
+    .option('-d, --debug', 'Optional. Enables debug mode.')
     .option('--verbose', 'Optional. Enables verbose logging.')
     .action((buildName, options) =>
     {
         options = options || {};
         options.buildName = buildName;
-        execute('compile', options);
+        execute('decorate', options);
     });
 
 program
     .command('launch <buildName>')
-    .description('Compiles and launches the specified build, optionally in debug mode.')
+    .description('Decorates and launches the specified build, optionally in debug mode.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
-    .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
+    .option('-d, --debug', 'Optional. Enables debug mode.')
     .option('-p, --product', 'Optional. Name of the product that will be launched. Will fall back to the first product specified in the build.')
     .option('-f, --family', 'Optional. Name of the family of the product that will be launched. Will fall back to the first family specified in the build.')
     .option('--verbose', 'Optional. Enables verbose logging.')
@@ -93,9 +93,9 @@ program
 program
     .command('pack')
     .alias('package')
-    .description('Compiles all the builds and files, optionally in debug mode, and then packages them into a redistributable ZXP archive.')
+    .description('Decorates all the builds, optionally in debug mode, and then packages them into a redistributable ZXP archive.')
     .option('-c, --config <path>', 'Optional. Configuration file, defaults to "./cepy-config.js".')
-    .option('-d, --debug', 'Optional. Compiles the build in debug mode.')
+    .option('-d, --debug', 'Optional. Enables debug mode.')
     .option('--verbose', 'Optional. Enables verbose logging.')
     .action((options) =>
     {

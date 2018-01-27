@@ -72,7 +72,7 @@ const config = Object.freeze({
         // MXI file template. If null or undefined, a default template will be used
         mxi: null,
 
-        // Temporary staging folder used while packaging multiple extensions
+        // Temporary staging folder used while packaging multiple builds
         staging: '.staging',
     },
 
