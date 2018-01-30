@@ -1,10 +1,8 @@
 
 # cepy
-> A command line utility that helps debugging and packaging HTML5-based extensions for Adobe Creative Cloud applications.
+> An utility that helps debugging and packaging HTML5-based extensions for Adobe Creative Cloud applications.
 
-This is an attempt to build a tool with all the capabilities of [grunt-cep](https://github.com/fcamarlinghi/grunt-cep/) (and more!), but completely decoupled from Grunt and its conventions/ecosystem.
-
-The project is currently used by the [*Expresso!*](https://github.com/fcamarlinghi/expresso/) extension for Photoshop. Please refer to the [Usage Example](#usage-example) section below for a quick overview of the tool.
+This is an attempt to build a tool with all the capabilities of [grunt-cep](https://github.com/fcamarlinghi/grunt-cep/) (and more!), but completely decoupled from Grunt and its conventions/ecosystem. Please refer to the [Usage Example](#usage-example) section below for a quick overview of the tool.
 
 ## Goals:
 * Decouple *grunt-cep* from Grunt, so that the tool can be used with vanilla NodeJS, NPM scripts and command line.
