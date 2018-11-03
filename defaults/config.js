@@ -23,7 +23,7 @@
  */
 const config = Object.freeze({
 
-    /** 
+    /**
      * Builds configuration
      * 
      * A dictionary ('name': {config}) of individual builds that should be executed. Each one
@@ -35,44 +35,73 @@ const config = Object.freeze({
      */
     builds: {},
 
-    /** 
+    /**
      * Packaging configuration
      * 
-     * Contains information about the final ZXP package
+     * Contains information about the final ZXP package.
      */
     packaging: {
 
-        // Output ZXP package file path
+        /**
+         * Output ZXP package file path.
+         * @type {String}
+         */
         output: 'output.zxp',
 
-        // Timestamp server URL
+        /**
+         * Timestamp server URL.
+         * @type {String}
+         */
         timestampURL: '',
 
-        // Certificate used to sign the package
+        /**
+         * Certificate used to sign the package.
+         */
         certificate: {
 
-            // Certificate owner
+            /**
+             * Certificate owner.
+             * @type {String}
+             */
             owner: '',
 
-            // Certificate file
+            /**
+             * Path to the certificate file.
+             * @type {String}
+             */
             file: null,
 
-            // Certificate password
+            /**
+             * Certificate password.
+             * @type {String}
+             */
             password: '',
 
         },
 
-        // Description of the package (supports HTML markup)
+        /**
+         * Description of the package (supports HTML markup).
+         * @type {String}
+         */
         description: '',
 
-        // License agreement shown when installing the package (supports HTML markup)
-        // See https://www.adobeexchange.com/resources/7#eula for an example
+        /**
+         * License agreement shown when installing the package (supports HTML markup).
+         * See https://www.adobeexchange.com/resources/7#eula for an example.
+         * @type {String}
+         */
         license: '',
 
-        // MXI file template. If null or undefined, a default template will be used
+        /**
+         * MXI file template. If null or undefined, a default template will be used.
+         * @type {String}
+         */
         mxi: null,
 
-        // Temporary staging folder used while packaging multiple builds
+        /**
+         * Temporary staging folder used while packaging multiple builds.
+         * @type {String}
+         */
         staging: '.staging',
     },
 

@@ -23,42 +23,76 @@
  */
 const extension = Object.freeze({
 
-    // Extension version number (format: "major.minor.patch")
+    /**
+     * Extension version number (format: "major.minor.patch").
+     * @type {String}
+     */
     version: '0.1.0',
 
-    // Unique identifier for the extension (used by Creative Cloud and Adobe Exchange)
-    // Usually provided in a form like "com.developer_name.bundle_name.extension_name"
+    /**
+     * Unique identifier for the extension (used by Creative Cloud and Adobe Exchange).
+     * Usually provided in a form like "com.developer_name.bundle_name.extension_name".
+     * @type {String}
+     */
     id: '',
 
-    // Extension name
-    // If empty, the extension won't be listed in the "Extensions" menu
+    /**
+     * Extension name.
+     * If empty, the extension won't be listed in the "Extensions" menu 
+     * inside the host application.
+     * @type {String}
+     */
     name: '',
 
-    // Extension root file
+    /**
+     * Extension root file.
+     * @type {String}
+     */
     mainPath: '',
 
-    // Extension ExtendScript root file
+    /**
+     * Extension ExtendScript root file.
+     * @type {String}
+     */
     scriptPath: '',
 
-    // CEF command line parameters
+    /**
+     * CEF command line parameters.
+     * @type {String[]}
+     */
     cefParameters: [],
 
-    // Extension type (i.e. "Panel", "ModalDialog", etc.)
+    /**
+     * Extension type (i.e. "Panel", "ModalDialog", etc.).
+     * @type {String}
+     */
     type: 'Panel',
 
-    // Extension lifecycle
+    /**
+     * Extension lifecycle.
+     */
     lifecycle: {
 
-        // True to make the extension's UI automatically visible
+        /**
+         * True to make the extension's UI automatically visible.
+         * @type {Boolean}
+         */
         autoVisible: true,
 
-        // A set of events that can start this extension
+        /**
+         * A set of events that can start this extension.
+         * @type {String[]}
+         */
         events: [],
 
     },
 
-    // Extension icons. Each icon should be a 23x23px PNG
-    // Paths are relative to the extension folder
+    /**
+     * Extension icons.
+     * 
+     * Each icon should be a 23x23px PNG.
+     * Paths are relative to the extension folder.
+     */
     icons: {
         light: {
             normal: '',
@@ -72,15 +106,20 @@ const extension = Object.freeze({
         },
     },
 
-    // Panel/window dimensions (in pixels)
+    /**
+     * Panel/window dimensions (in pixels).
+     */
     size: {
         base: { width: 320, height: 400 },
         min: { width: 320, height: 300 },
         max: { width: 800, height: 2400 },
     },
 
-    // Extension manifest template
-    // If null or undefined, a default template will be used
+    /**
+     * Path to the template used to compile the extension manifest.
+     * If null or undefined, a default template will be used.
+     * @type {String}
+     */
     manifest: null,
 
 });

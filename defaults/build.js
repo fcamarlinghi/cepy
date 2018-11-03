@@ -43,14 +43,14 @@ const build = Object.freeze({
 
     /**
      * Products targeted by this build.
-     * @type {(String,String[])}
+     * @type {(String|String[])}
      */
     products: [],
 
     /**
      * Families targeted by this build, specified as either a range of supported families,
      * or as the minimum supported family.
-     * @type {(String,String[])}
+     * @type {(String|String[])}
      * 
      * @example
      * Arrays will always be treated as a range of supported versions, whereas a string

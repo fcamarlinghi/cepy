@@ -22,47 +22,71 @@
  * Contains information about the extension bundle, that is a container for one
  * or more extensions.
  * See: http://www.adobe.com/devnet/creativesuite/articles/multiple-extensions.html
- * 
- * If required data is not specified here, it will be loaded from the first
- * extension in the bundle.
  */
 const bundle = Object.freeze({
 
-    // Bundle version number (format: "major.minor.patch", for trials add ".trial" at the end)
+    /**
+     * Bundle version number (format: "major.minor.patch", for trials add ".trial" at the end).
+     * If null or undefined, it will be gathered from the first extension in the bundle.
+     * @type {String}
+     */
     version: null,
 
-    // Unique identifier for the bundle (used by Creative Cloud and Extension Manager)
-    // Usually provided in a form like "com.developer_name.bundle_name"
+    /**
+     * Unique identifier for the bundle (used by Creative Cloud and Extension Manager).
+     * Usually provided in a form like "com.developer_name.bundle_name".
+     * If null or undefined, it will be gathered from the first extension in the bundle.
+     * @type {String}
+     */
     id: null,
 
-    // Bundle name
+    /**
+     * Bundle name.
+     * If null or undefined, it will be gathered from the first extension in the bundle.
+     * @type {String}
+     */
     name: null,
 
-    // Author or company name
-    author: '',
+    /**
+     * Author or company name.
+     * If null or undefined, it will be gathered from the first extension in the bundle.
+     * @type {String}
+     */
+    author: null,
 
-    // Bundle manifest template
-    // If null or undefined, a default template will be used
+    /**
+     * Path to the template used to compile the bundle manifest.
+     * If null or undefined, a default template will be used.
+     * @type {String}
+     */
     manifest: null,
 
-    // Debugging
+    /**
+     * Debugging
+     */
     debug: {
 
-        // Debug file template
-        // If null or undefined, a default template will be used
+        /**
+         * Path to the template used to compile the debug file.
+         * If null or undefined, a default template will be used.
+         * @type {String}
+         */
         template: null,
 
-        // Host port used for debugging
-        //
-        // In order to support debugging an extension inside multiple products at the
-        // same time, each supported product will have an unique debug port assigned:
-        // - Photoshop: 8000
-        // - Illustrator: 8001
-        // - InDesign: 8002
-        // - Etc. For a complete list, see ".debug" file.
-        //
-        // If bundling multiple extensions, each extension will have its debug
-        // port incremented by 100 (i.e. 8000, 8100, 8200, etc.), see ".debug" file.
+        /**
+         * Host port used for debugging.
+         * 
+         * In order to support debugging an extension inside multiple products at the
+         * same time, each supported product will have an unique debug port assigned:
+         * - Photoshop: 8000
+         * - Illustrator: 8001
+         * - InDesign: 8002
+         * - Etc. For a complete list, see ".debug" file.
+         * 
+         * If bundling multiple extensions, each extension will have its debug
+         * port incremented by 100 (i.e. 8000, 8100, 8200, etc.), see ".debug" file.
+         * @type {Number}
+         */
         port: 8000,
 
     },
