@@ -19,13 +19,13 @@ This is an attempt to build a tool with all the capabilities of [grunt-cep](http
 The project is in its early days. Most of the features of *grunt-cep* are already ported over, but might still be unstable/not completely working.
 
 Next steps:
-* Continue to experiment with the concept of "build" as the backbone of the tool.
-* Consider which config settings might be moved out of the config file to provide more flexibility from command line and code.
-* Improve command line/NodeJS APIs.
-* Add more commands (such as *create* for project scaffolding).
-* Add support for using minimum product versions in manifest/mxi files (see [this post](http://www.davidebarranca.com/2016/06/html-panel-tips-21-photoshop-cc2015-5-2016-survival-guide/)).
-* Better console output and error reporting (especially when using the tool programmatically).
-* Rework hybrid extensions support.
+- [ ] Continue to experiment with the concept of "build" as the backbone of the tool.
+- [ ] Consider which config settings might be moved out of the config file to provide more flexibility from command line and code.
+- [ ] Improve command line/NodeJS APIs.
+- [ ] Add more commands (such as *create* for project scaffolding).
+- [x] Add support for using minimum product versions in manifest/mxi files (see [this post](http://www.davidebarranca.com/2016/06/html-panel-tips-21-photoshop-cc2015-5-2016-survival-guide/)).
+- [x] Better console output and error reporting (especially when using the tool programmatically).
+- [x] Rework hybrid extensions support.
 
 ## Usage Example
 Config file:
