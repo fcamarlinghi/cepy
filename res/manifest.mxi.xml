@@ -4,9 +4,13 @@
   <description><![CDATA[{%= bundle.description %}]]></description>
   <license-agreement><![CDATA[{%= bundle.license %}]]></license-agreement>
   <products>
-    {%= ProductList %}
+    {% productList.forEach(function (product) { %}
+    {%= product %}
+    {% }); %}
   </products>
   <files>
-    {%= FileList %}
+    {% fileList.forEach(function (file) { %}
+    {%= file %}
+    {% }); %}
   </files>
 </macromedia-extension>

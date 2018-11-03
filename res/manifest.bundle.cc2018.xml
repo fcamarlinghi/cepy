@@ -2,11 +2,15 @@
 <ExtensionManifest Version="7.0" ExtensionBundleId="{%= bundle.id %}" ExtensionBundleName="{%= bundle.name %}" ExtensionBundleVersion="{%= bundle.version %}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Author><![CDATA[{%= bundle.author %}]]></Author>
   <ExtensionList>
-    {%= ExtensionList %}
+    {% extensionList.forEach(function (extension) { %}
+    {%= extension %}
+    {% }); %}
   </ExtensionList>
   <ExecutionEnvironment>
     <HostList>
-      {%= HostList %}
+      {% hostList.forEach(function (host) { %}
+      {%= host %}
+      {% }); %}
     </HostList>
     <LocaleList>
       <Locale Code="All" />
@@ -16,6 +20,8 @@
     </RequiredRuntimeList>
   </ExecutionEnvironment>
   <DispatchInfoList>
-    {%= DispatchInfoList %}
+    {% dispatchInfoList.forEach(function (dispatchInfo) { %}
+    {%= dispatchInfo %}
+    {% }); %}
   </DispatchInfoList>
 </ExtensionManifest>
