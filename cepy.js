@@ -20,7 +20,8 @@ const _ = require('lodash'),
       chalk = require('chalk'),
       Promise = require('bluebird'),
       path = require('path'),
-      log = require('debug')('cepy');
+      log = require('debug')('cepy'),
+      cpy = require('cpy');
 
 const rimraf = Promise.promisify(require('rimraf')),
       mkdirp = Promise.promisify(require('mkdirp')),
@@ -224,6 +225,35 @@ Cepy.prototype.pack = function (options)
 
     // Generate MXI file
     .then(() => { return template.generateMXI(this._packaging.staging, this._builds, this._packaging); })
+
+    // Copy additional files to the bundle
+    .then(() =>
+    {
+        // We need to resolve the path to the staging folder to obtain an absolute path to avoid
+        // issues in case the user specifies a different working directory in the "files" array
+        const stagingResolved = path.resolve(this._packaging.staging);
+
+        if (Array.isArray(this._packaging.files))
+        {
+            const copies = [];
+            for (const file of this._packaging.files)
+            {
+                if (typeof file === 'string' && file.length > 0)
+                {
+                    copies.push(cpy(file, stagingResolved));
+                }
+                else
+                {
+                    copies.push(cpy(file.source, stagingResolved, file.options));
+                }
+            }
+            return Promise.all(copies);
+        }
+        else if (typeof this._packaging.files === 'string' && this._packaging.files.length > 0)
+        {
+            return cpy(this._packaging.files, stagingResolved);
+        }
+    })
 
     // Package hybrid extension
     .then(() =>

@@ -99,6 +99,15 @@ const config = Object.freeze({
         mxi: null,
 
         /**
+         * Additional files that will be copied as-is into the extension bundle.
+         * If a string or an array of strings is provided they will be interpreted as paths
+         * to files or folders. Alternatively an array of objects can be provided containing 
+         * source paths and options to be passed to the "cpy" utility.
+         * @type {(String|Array.<{source:(String|String[], options:{})}>)}
+         */
+        files: null,
+
+        /**
          * Temporary staging folder used while packaging multiple builds.
          * @type {String}
          */
