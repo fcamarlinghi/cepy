@@ -39,15 +39,15 @@
   "main": "cepy.js",
   "bin": "bin/cepy.js",
   "dependencies": {
-    "bluebird": "^3.5.2",
-    "chalk": "^2.4.1",
-    "commander": "^2.19.0",
-    "cpy": "^7.0.1",
-    "debug": "^4.1.0",
-    "lodash": "^4.17.11",
+    "bluebird": "^3.7.2",
+    "chalk": "^3.0.0",
+    "commander": "^2.20.3",
+    "cpy": "^8.0.0",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2",
-    "uuid": "^3.3.2",
+    "rimraf": "^3.0.0",
+    "uuid": "^3.3.3",
     "zxp-provider": "^1.2.0"
   }
 }
