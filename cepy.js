@@ -24,7 +24,7 @@ const _ = require('lodash'),
       cpy = require('cpy');
 
 const rimraf = Promise.promisify(require('rimraf')),
-      mkdirp = Promise.promisify(require('mkdirp')),
+      fs_mkdir = Promise.promisify(require('fs').mkdir),
       fs_stat = Promise.promisify(require('fs').stat);
 
 const template = require('./lib/template.js'),
@@ -200,7 +200,7 @@ Cepy.prototype.pack = function (options)
 
     // Create output directory structure
     .then(() => { return rimraf(path.join(this._packaging.staging, '/*')); })
-    .then(() => { return mkdirp(this._packaging.staging); })
+    .then(() => { return fs_mkdir(this._packaging.staging, { recursive: true }); })
 
     // Check certificate file, create one if none exists
     .then(() =>

@@ -34,20 +34,19 @@
     "incopy"
   ],
   "engines": {
-    "node": ">=8.9.1"
+    "node": ">=10.12.0"
   },
   "main": "cepy.js",
   "bin": "bin/cepy.js",
   "dependencies": {
     "bluebird": "^3.7.2",
-    "chalk": "^3.0.0",
-    "commander": "^2.20.3",
-    "cpy": "^8.0.0",
+    "chalk": "^4.0.0",
+    "commander": "^5.0.0",
+    "cpy": "^8.1.0",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1",
-    "rimraf": "^3.0.0",
-    "uuid": "^3.3.3",
-    "zxp-provider": "^1.2.0"
+    "rimraf": "^3.0.2",
+    "uuid": "^7.0.3",
+    "zxp-provider": "^2.0.0"
   }
 }
